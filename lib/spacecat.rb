@@ -17,7 +17,6 @@ class Spacecat
   end
 
   def score
-    puts "Scoring #{@galaxy}"
     send("score_#{@galaxy}")
   end
 
