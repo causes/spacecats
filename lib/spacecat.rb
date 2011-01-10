@@ -8,16 +8,25 @@ class Spacecat
 
   attr_accessor :weight, :limbs, :color
 
-  def initialize(galaxy, weight, limbs, color)
-    @galaxy = galaxy
-    @weight = weight
-    @limbs = limbs
-    @color = color
+  def initialize(params)
+    @galaxy = params[:galaxy].to_sym if params[:galaxy]
+    @weight = params[:weight].to_i
+    @limbs = params[:limbs].to_i
+    @color = params[:color]
     validate
   end
 
   def score
+    puts "Scoring #{@galaxy}"
     send("score_#{@galaxy}")
+  end
+
+  def score_andromeda
+    10
+  end
+
+  def score_betelgeuse
+    50
   end
 
   def score_milky_way
@@ -28,18 +37,18 @@ private
 
   def validate
     unless GALAXIES.include?(@galaxy)
-      raise UnreasonableCat.new("Uncharted galaxy: #{@galaxy}")
+      raise UnreasonableCat.new("Uncharted galaxy: #{@galaxy.inspect}")
     end
 
     unless WEIGHT_RANGE.include?(@weight)
-      raise UnreasonableCat.new("Unreasonable weight: #{@weight} kilograms")
+      raise UnreasonableCat.new("Unreasonable weight: #{@weight.inspect} kilograms")
     end
 
     unless LIMB_RANGE.include?(@limbs)
-      raise UnreasonableCat.new("Unreasonable limb count: #{@limbs}")
+      raise UnreasonableCat.new("Unreasonable limb count: #{@limbs.inspect}")
     end
 
-    unless @color.all?{|c| c.is_a?(Fixnum) && COLOR_RANGE.include?(c)}
+    unless @color =~ /[0-9A-F]{6}/i
       raise UnreasonableCat.new("Blinding color: #{@color.inspect}")
     end
   end
