@@ -42,6 +42,14 @@ class Spacecat
     ].sum
   end
 
+  def score_sombrero
+    score = [
+      -(weight*20 - 279)**2,
+      -5000*((40-limbs).abs)
+    ].sum + 150000
+    [score, 0].max
+  end
+
 private
 
   def red

@@ -15,8 +15,9 @@ class Spacecat::Telescope
   end
 
   SCALES = {
-    :andromeda => 10000,
-    :cartwheel => 20000
+    :andromeda => 20000,
+    :cartwheel => 10000,
+    :sombrero  => 10000
   }
 
   def self.look(galaxy)
@@ -28,8 +29,8 @@ class Spacecat::Telescope
       score = cat.score
       bar_scale = SCALES[galaxy]
       bars = []
-      bars[0] = score < 0 ? ('#'*(-score/bar_scale)).rjust(10) : ''
-      bars[1] = score > 0 ? ('#'*(score/bar_scale)).ljust(10) : ''
+      bars[0] = score < 0 ? ('#'*(-score/bar_scale)).rjust(20) : ''
+      bars[1] = score > 0 ? ('#'*(score/bar_scale)).ljust(20) : ''
       [weight, limbs, color, score] + bars
     end
   end
