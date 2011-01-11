@@ -10,7 +10,11 @@ class Spacecat
       "hello, world!"
     end
 
-    get '/:galaxy' do
+    get '/galaxies' do
+      Spacecat::GALAXIES.join(',')
+    end
+
+    get '/galaxies/:galaxy' do
       begin
         Spacecat.new(params).score.to_s
       rescue StandardError => e
