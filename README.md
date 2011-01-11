@@ -37,7 +37,7 @@ Happy cat catching!
 *  **batch**: _(optional)_ `true` if you're submitting a batch of attributes
 
 It responds with an integer indicating how well your Spacecat survived the
-galaxy.
+galaxy. Obviously, higher values are better.
 
 #### Batching
 By including `batch=true` in your request, you can submit batches of Spacecat
