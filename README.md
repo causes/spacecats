@@ -11,7 +11,7 @@ allow you to spawn a particular cat in a particular galaxy and get a report back
 of how wll it fared.
 
 Using these amazing technologies, you are to report back on the optimal cat you
-can produce in each galaxy. Delivery your report to jobs+spacecats@causes.com,
+can produce in each galaxy. Delivery your report to spacecats@causes.com,
 including the cats you discovered, the code you wrote, and a description of your
 process.
 
