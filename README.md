@@ -19,6 +19,8 @@ Happy cat catching!
 
 ## API
 
+The API currently lives at http://spacecats.heroku.com
+
 ### List galaxies
 `GET /galaxies` responds with a comma-separated list of known galaxies
 
