@@ -1,7 +1,7 @@
 class Spacecat
-  GALAXIES = [:milky_way, :andromeda, :betelgeuse]
-  WEIGHT_RANGE = 1...1000
-  LIMB_RANGE = 0...100
+  GALAXIES = [:andromeda, :cartwheel, :sombrero]
+  WEIGHT_RANGE = 1..1000
+  LIMB_RANGE = 0..100
   COLOR_RANGE = 0..255
 
   UnreasonableCat = Class.new(ArgumentError)
@@ -20,19 +20,32 @@ class Spacecat
     send("score_#{@galaxy}")
   end
 
+  # Andromeda likes heavy cats
+  # Just one peak
   def score_andromeda
-    10
+    -(weight - 500)**2 + rgb.inject(0){|a,b| a + b}
   end
 
-  def score_betelgeuse
-    50
-  end
-
-  def score_milky_way
-    weight + limbs*10 - (color.max - color.min)*5
+  def score_cartwheel
   end
 
 private
+
+  def red
+    rgb[0]
+  end
+
+  def green
+    rgb[1]
+  end
+
+  def blue
+    rgb[2]
+  end
+
+  def rgb
+    color.scan(/../).map(&:hex)
+  end
 
   def validate
     unless GALAXIES.include?(@galaxy)
