@@ -1,6 +1,8 @@
 require 'sinatra/base'
 require 'pp'
 
+require 'spacecat'
+
 class Spacecat
   class App < Sinatra::Base
 
