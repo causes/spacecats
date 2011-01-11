@@ -1,24 +1,36 @@
+require 'spacecat'
+
 class Spacecat::Telescope
-  def self.andromeda
-    puts "Testing Andromeda"
-    [
-      [1, 0, "000000"],
-      [1, 0, "FFFFFF"],
-      [1, 100, "000000"],
-      [1000, 0, "FFFFFF"],
-      [1000, 100, "000000"],
-      [1000, 100, "FFFFFF"],
-      [500, 0, "000000"],
-      [500, 0, "FFFFFF"],
-      [1, 50, "000000"],
-      [1, 50, "FFFFFF"],
-      [500, 50, "999999"],
-    ].map do |weight, limbs, color|
-      cat = Spacecat.new(:galaxy => :andromeda,
+  WEIGHT_OPTIONS = [1, 500, 1000]
+  LIMB_OPTIONS = [0, 50, 100]
+  COLOR_OPTIONS = ["000000", "999999", "FFFFFF"]
+
+  TESTS = []
+  WEIGHT_OPTIONS.each do |weight|
+    LIMB_OPTIONS.each do |limbs|
+      COLOR_OPTIONS.each do |color|
+        TESTS << [weight, limbs, color]
+      end
+    end
+  end
+
+  SCALES = {
+    :andromeda => 10000,
+    :cartwheel => 20000
+  }
+
+  def self.look(galaxy)
+    TESTS.map do |weight, limbs, color|
+      cat = Spacecat.new(:galaxy => galaxy,
                          :weight => weight,
                          :limbs => limbs,
                          :color => color)
-      puts [weight, limbs, color].join(',') + ": #{cat.score}"
+      score = cat.score
+      bar_scale = SCALES[galaxy]
+      bars = []
+      bars[0] = score < 0 ? ('#'*(-score/bar_scale)).rjust(10) : ''
+      bars[1] = score > 0 ? ('#'*(score/bar_scale)).ljust(10) : ''
+      [weight, limbs, color, score] + bars
     end
   end
 end
