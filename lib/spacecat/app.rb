@@ -7,7 +7,8 @@ class Spacecat
   class App < Sinatra::Base
 
     get '/' do
-      "hello, world!"
+      content_type 'text/markdown', :charset => 'utf-8'
+      File.read('README.md')
     end
 
     get '/galaxies' do

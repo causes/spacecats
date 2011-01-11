@@ -11,6 +11,8 @@ describe Spacecat::App do
   it "works" do
     get '/'
     last_response.should be_successful
+    last_response.headers["Content-Type"].should =~ /text\/markdown/
+    last_response.body.should =~ /SPACECATS!/
   end
 
   it "lists the galaxies" do
