@@ -1,7 +1,8 @@
 require 'array_ext'
+require 'fixnum_ext'
 
 class Spacecat
-  GALAXIES = [:andromeda, :cartwheel, :sombrero]
+  GALAXIES = [:andromeda, :cartwheel, :sombrero, :tadpole]
   WEIGHT_RANGE = 1..1000
   LIMB_RANGE = 0..100
   COLOR_RANGE = 0..255
@@ -48,6 +49,14 @@ class Spacecat
       -5000*((40-limbs).abs)
     ].sum + 150000
     [score, 0].max
+  end
+
+  def score_tadpole
+    color_score = (255 - (blue-red).abs) - green
+    limb_score = limbs.prime? ? 255 : 0
+    weight_score = (420 - weight).abs * 0.3
+    puts [weight_score, limb_score, color_score].inspect
+    [-50, weight_score, limb_score, color_score].sum
   end
 
 private

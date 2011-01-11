@@ -2,8 +2,8 @@ require 'spacecat'
 
 class Spacecat::Telescope
   WEIGHT_OPTIONS = [1, 500, 1000]
-  LIMB_OPTIONS = [0, 50, 100]
-  COLOR_OPTIONS = ["000000", "999999", "FFFFFF"]
+  LIMB_OPTIONS = [0, 7, 50, 67, 100]
+  COLOR_OPTIONS = ["000000", "FF0000", "999999", "FF99FF", "FF00FF", "FFFFFF"]
 
   TESTS = []
   WEIGHT_OPTIONS.each do |weight|
@@ -17,7 +17,8 @@ class Spacecat::Telescope
   SCALES = {
     :andromeda => 20000,
     :cartwheel => 10000,
-    :sombrero  => 10000
+    :sombrero  => 10000,
+    :tadpole   => 30
   }
 
   def self.look(galaxy)
