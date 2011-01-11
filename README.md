@@ -1,6 +1,22 @@
 # SPACECATS!
 _Explore the universe of optimal cattednes._
 
+## Your mission
+
+You are an intrepid engineer, founding fresh feline frontiers in new galaxies,
+such that they may be populated, as ours is, with adorable kittens. Of course,
+the attributes of any one galaxy strongly affect the ability for a cat to
+survive there.  Luckily for you, modern data transfer and cloning techniques
+allow you to spawn a particular cat in a particular galaxy and get a report back
+of how wll it fared.
+
+Using these amazing technologies, you are to report back on the optimal cat you
+can produce in each galaxy. Delivery your report to jobs+spacecats@causes.com,
+including the cats you discovered, the code you wrote, and a description of your
+process.
+
+Happy cat catching!
+
 ## API
 
 ### List galaxies
