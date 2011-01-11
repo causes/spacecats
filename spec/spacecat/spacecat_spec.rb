@@ -11,4 +11,11 @@ describe Spacecat do
     Spacecat.new(:galaxy => "andromeda", :weight => "10",
                  :limbs => "4", :color => "000000").should be_a(Spacecat)
   end
+
+  it "has a fitness score" do
+    Spacecat.new(:galaxy => :milky_way, :weight => 2,
+                 :limbs => 4, :color => "000000").score.should == 1
+    Spacecat.new(:galaxy => :milky_way, :weight => 50,
+                 :limbs => 6, :color => "FF00FF").score.should == 0
+  end
 end

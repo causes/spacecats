@@ -2,7 +2,7 @@ require 'array_ext'
 require 'fixnum_ext'
 
 class Spacecat
-  GALAXIES = [:andromeda, :cartwheel, :sombrero, :tadpole]
+  GALAXIES = [:milky_way, :andromeda, :cartwheel, :sombrero, :tadpole]
   WEIGHT_RANGE = 1..1000
   LIMB_RANGE = 0..100
   COLOR_RANGE = 0..255
@@ -23,8 +23,6 @@ class Spacecat
     send("score_#{@galaxy}").to_i
   end
 
-  # Andromeda likes heavy cats
-  # Just one peak
   def score_andromeda
     -(weight - 500)**2 + rgb.sum
   end
@@ -41,6 +39,14 @@ class Spacecat
 
       (rgb.sum/2)**2
     ].sum
+  end
+
+  # Our galaxy's cats are gray, have 4 limbs, and weigh ~2-12kg
+  def score_milky_way
+    return 0 unless @limbs == 4
+    return 0 unless (1..12).include?(@weight)
+    return 0 unless rgb.uniq.size == 1
+    return 1
   end
 
   def score_sombrero
