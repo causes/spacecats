@@ -11,7 +11,6 @@ class Spacecat
     end
 
     get '/' do
-      content_type 'text/markdown', :charset => 'utf-8'
       File.read('README.md')
     end
 

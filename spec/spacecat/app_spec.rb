@@ -11,17 +11,16 @@ describe Spacecat::App do
   it "works" do
     get '/'
     last_response.should be_successful
-    last_response.headers["Content-Type"].should =~ /text\/markdown/
     last_response.body.should =~ /SPACECATS!/
   end
 
-  describe 'galaxies' do
-    it "sets the content type" do
-      get '/galaxies'
-      last_response.headers['Content-Type'].should =~ /text\/plain/
-      last_response.headers['Content-Type'].should =~ /charset=utf-8/
-    end
+  it "sets the content type" do
+    get '/'
+    last_response.headers['Content-Type'].should =~ /text\/plain/
+    last_response.headers['Content-Type'].should =~ /charset=utf-8/
+  end
 
+  describe 'galaxies' do
     it "lists the galaxies" do
       get '/galaxies'
       last_response.should =~ /^\w+(,\w+)*$/
