@@ -1,3 +1,5 @@
+require 'array_ext'
+
 class Spacecat
   GALAXIES = [:andromeda, :cartwheel, :sombrero]
   WEIGHT_RANGE = 1..1000
@@ -17,16 +19,27 @@ class Spacecat
   end
 
   def score
-    send("score_#{@galaxy}")
+    send("score_#{@galaxy}").to_i
   end
 
   # Andromeda likes heavy cats
   # Just one peak
   def score_andromeda
-    -(weight - 500)**2 + rgb.inject(0){|a,b| a + b}
+    -(weight - 500)**2 + rgb.sum
   end
 
   def score_cartwheel
+    [
+      -(weight/5 - 60)**2,
+      -2*(weight/5 - 80)**2,
+      -(weight/5 - 100)**2,
+
+      (limbs - 94)**2,
+      4*(limbs - 92)**2,
+      (limbs - 90)**2,
+
+      (rgb.sum/2)**2
+    ].sum
   end
 
 private
