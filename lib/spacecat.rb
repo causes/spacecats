@@ -23,10 +23,13 @@ class Spacecat
     send("score_#{@galaxy}").to_i
   end
 
+  # NB: maximum value is 765 at weight=500, color=ffffff
   def score_andromeda
     -(weight - 500)**2 + rgb.sum
   end
 
+  # NB: maximum value is 195916 at weight=400, limbs=0, color=ffffff
+  # basically, fat white nuggets
   def score_cartwheel
     [
       -(weight/5 - 60)**2,
@@ -49,6 +52,7 @@ class Spacecat
     return 1
   end
 
+  # NB: maximum value is 149999 at weight=14, limbs=40
   def score_sombrero
     score = [
       -(weight*20 - 279)**2,
@@ -57,6 +61,8 @@ class Spacecat
     [score, 0].max
   end
 
+  # NB: maximum value is 634 at weight=1000, limbs any prime, and any
+  # color such that redpart(color) == bluepart(color)
   def score_tadpole
     color_score = (255 - (blue-red).abs) - green
     limb_score = limbs.prime? ? 255 : 0
