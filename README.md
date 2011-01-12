@@ -8,7 +8,7 @@ such that they may be populated, as ours is, with adorable kittens. Of course,
 the attributes of any one galaxy strongly affect the ability for a cat to
 survive there.  Luckily for you, modern data transfer and cloning techniques
 allow you to spawn a particular cat in a particular galaxy and get a report back
-of how wll it fared.
+of how well it fared.
 
 Using these amazing technologies, you are to report back on the optimal cat you
 can produce in each galaxy. Delivery your report to spacecats@causes.com,
