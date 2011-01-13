@@ -103,7 +103,7 @@ private
     end
 
     unless @color =~ /[0-9A-F]{6}/i
-      raise UnreasonableCat.new("Blinding color: #{@color.inspect}")
+      raise UnreasonableCat.new("Unfathomable color: #{@color.inspect}")
     end
   end
 end

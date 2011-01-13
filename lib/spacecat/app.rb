@@ -44,7 +44,7 @@ class Spacecat
           Spacecat.new(params).score.to_s
         end
       rescue StandardError => e
-        status 401
+        status 400
         e.message
       end
     end
