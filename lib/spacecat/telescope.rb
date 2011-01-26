@@ -15,10 +15,11 @@ class Spacecat::Telescope
   end
 
   SCALES = {
-    :andromeda => 20000,
-    :cartwheel => 10000,
-    :sombrero  => 10000,
-    :tadpole   => 30
+    :andromeda  => 20000,
+    :black_hole => 100000000,
+    :cartwheel  => 10000,
+    :sombrero   => 10000,
+    :tadpole    => 30
   }
 
   def self.look(galaxy)

@@ -2,7 +2,7 @@ require 'array_ext'
 require 'fixnum_ext'
 
 class Spacecat
-  GALAXIES = [:milky_way, :andromeda, :cartwheel, :sombrero, :tadpole]
+  GALAXIES = [:milky_way, :andromeda, :cartwheel, :sombrero, :tadpole, :black_hole]
   WEIGHT_RANGE = 1..1000
   LIMB_RANGE = 0..100
   COLOR_RANGE = 0..255
@@ -26,6 +26,11 @@ class Spacecat
   # NB: maximum value is 765 at weight=500, color=ffffff
   def score_andromeda
     -(weight - 500)**2 + rgb.sum
+  end
+
+  # Effectively random - but consistent - numbers, because I'm a jerk
+  def score_black_hole
+    "#{@weight}#{@limbs}#{@color}".hash
   end
 
   # NB: maximum value is 195916 at weight=400, limbs=0, color=ffffff
